@@ -7,8 +7,6 @@ it('renders without crashing', () => {
   shallow(<App />);
 });
 
-
-
 describe('post a message', () => {
 
   it('should add a message to a given state', () => {
@@ -30,6 +28,12 @@ describe('post a message', () => {
   })
 })
 
+
+describe('user input controller', () => {
+  // create a new message object from event
+  // 
+})
+
 describe('message feed', () => {
   it('should fire an event when a message is added to the feed', () => {
     let mockMessageSentFunc = jest.fn()
@@ -41,12 +45,6 @@ describe('message feed', () => {
   })
     // Event should include which message was fired
 })
-
-describe('user input controller', () => {
-  // create a new message object from event
-  // 
-})
-
 // desctibe: Bot
 // Should render welcome message
 // Should listen to a message feed

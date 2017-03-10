@@ -6,10 +6,12 @@ export const postMessage = (state, msg) => {
   state.push(msg);
 
 }
-// const postRandomMessage = state => state.push(mockMessages[Math.floor(Math.random() * 10)])
+
+
 
 const Messages = ({messages}) => {
-  const messageFeed = messages.map((msg, i) => {
+  debugger;
+  const MessageFeed = messages.map((msg, i) => {
     return (
       <Message
         key={i}
@@ -19,7 +21,7 @@ const Messages = ({messages}) => {
 
   return (
     <div>
-      {messageFeed}
+      {MessageFeed}
     </div>
   );
 }
@@ -29,44 +31,62 @@ const Message = ({message}) =>
     {message.value}, by {message.user}
   </div>
 
-const ChatInput = (props) =>
+// Render a list of possible responses for the user to 
+const Responses = ({responses}) => {
+  debugger;
+  const ResponseList = responses.map((response, i) => {
+    return (
+      <Response
+        key={i}
+        response={response} />
+    );
+  })
+  return (
+    <div>
+      {ResponseList}
+    </div>
+  )
+}
+
+// A single response item
+const Response = (props) =>
   <div>
-    <button onClick={props.onMessageSubmit}>🚁</button>
-    <button onClick={props.onMessageSubmit}>🥐</button>
+    <button onClick={props.onMessageSubmit}>{props.response}</button>
   </div>
 
 export class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      messages: []
+      messages: props.welcome.value,
+      responses: props.welcome.responses
     }
 
-    // this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(e) {
-    // const newMessage = {
-    //   user: 'gaga',
-    //   value: e.target.innerHTML
-    // }
+    const newMessage = {
+      user: 'user',
+      value: e.target.innerHTML
+    }
 
-    // const messages = this.state.messages;
-    // postMessage(messages, newMessage)
+    const messages = this.state.messages;
+    postMessage(messages, newMessage)
 
-    // this.setState({ messages });
+    this.setState({ messages });
   }
 
   componentWillUpdate() {
     // When a new message is posted, log that message key
-   }
+  }
 
   render() {
     return (
       <div className="App">
         <h1>React Chat</h1>
         <Messages messages={this.state.messages} />
-        <ChatInput onMessageSubmit={this.handleSubmit} />
+        <Responses responses={this.state.responses} onMessageSubmit={this.handleSubmit} />
       </div>
     );
   }
