@@ -32,7 +32,7 @@ const Message = ({message}) =>
 const Responses = (props) => {
   const handleClick = e => 
     console.log(e.target.innerHTML)
-    
+
   const ResponseList = props.responses.map((response, i) => {
     return (
       <Response
@@ -61,24 +61,9 @@ export class App extends Component {
       messages: [welcomeMessage],
       responses: welcomeMessage.replies
     }
-
-    // this.handleSubmit = this.handleSubmit.bind(this)
   }
-
-  handleSubmit(e) {
-    debugger;
-    alert(e.target.innerHTML)
-    }
-
-    // const messages = this.state.messages;
-    // postMessage(messages, newMessage)
-
-    // this.setState({ messages });
-  
-  componentWillUpdate() {
-    // When a new message is posted, log that message key
-  }
-
+  // every bot message can invoke another message and declare the next set of responseses
+  // A response specifies which bot message to fire
   render() {
     return (
       <div className="App">
