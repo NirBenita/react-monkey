@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import mockConversation from './mockConversation';
+
+export const postMessage = (state, msg) => {
+  state.push(msg);
+}
 
 // 📢 A stream of messages
 const Messages = ({messages}) => {
@@ -27,15 +30,12 @@ const Message = ({message}) =>
 
 // 🗣 A list of possible responses
 const Responses = (props) => {
-  const handleClick = e => {
-    console.log(e.target.dataset.next)}
-
   const ResponseList = props.responses.map((response, i) => {
     return (
       <Response
         key={i}
         response={response}
-        onClick={handleClick} />
+        onClick={props.onMessageSubmit} />
     );
   })
   return (
@@ -63,8 +63,18 @@ export class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit(e){
-    
+  handleSubmit(e){		
+    const messages = this.state.messages;		
+    let newMessage = {
+      value: e.target.innerHTML,
+      user: 'user'
+    }
+
+    postMessage(messages, newMessage);
+
+    console.log('next msg: ', e.target.dataset.next)
+
+    this.setState({ messages });
   }
 
   render() {
