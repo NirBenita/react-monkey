@@ -29,13 +29,16 @@ const Message = ({message}) =>
   </div>
 
 // Render a list of possible responses for the user to 
-const Responses = ({responses}) => {
-  debugger;
-  const ResponseList = responses.map((response, i) => {
+const Responses = (props) => {
+  const handleClick = e => 
+    console.log(e.target.innerHTML)
+    
+  const ResponseList = props.responses.map((response, i) => {
     return (
       <Response
         key={i}
-        response={response} />
+        response={response}
+        onClick={handleClick} />
     );
   })
   return (
@@ -47,34 +50,31 @@ const Responses = ({responses}) => {
 
 // A single response item
 const Response = (props) =>
-  <div>
-    <button onClick={props.onMessageSubmit}>{props.response}</button>
-  </div>
+    <button onClick={props.onClick}>{props.response.value}</button>
 
 export class App extends Component {
   constructor(props) {
     super(props)
     const welcomeMessage = mockConversation[0];
+
     this.state = {
       messages: [welcomeMessage],
-      responses: [welcomeMessage.responses]
+      responses: welcomeMessage.replies
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(e) {
-    const newMessage = {
-      user: 'user',
-      value: e.target.innerHTML
+    debugger;
+    alert(e.target.innerHTML)
     }
 
-    const messages = this.state.messages;
-    postMessage(messages, newMessage)
+    // const messages = this.state.messages;
+    // postMessage(messages, newMessage)
 
-    this.setState({ messages });
-  }
-
+    // this.setState({ messages });
+  
   componentWillUpdate() {
     // When a new message is posted, log that message key
   }
