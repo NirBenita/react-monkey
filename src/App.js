@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import mockConversation from './mockConversation';
+
 
 export const postMessage = (state, msg) => {
   state.push(msg);
@@ -25,7 +25,8 @@ const Messages = ({messages}) => {
 // A single message
 const Message = ({message}) =>
   <div>
-    {message.value}, by {message.user}
+    <span>{message.value}</span><br/>
+    <i>{message.user}</i>
   </div>
 
 // 🗣 A list of possible responses
@@ -53,7 +54,7 @@ const Response = (props) =>
 export class App extends Component {
   constructor(props) {
     super(props)
-    const welcomeMessage = mockConversation[0];
+    const welcomeMessage = props.conversation[0];
 
     this.state = {
       messages: [welcomeMessage],
@@ -65,14 +66,19 @@ export class App extends Component {
 
   handleSubmit(e){		
     const messages = this.state.messages;		
-    let newMessage = {
+    let userMessage = {
       value: e.target.innerHTML,
       user: 'user'
     }
 
-    postMessage(messages, newMessage);
+    postMessage(messages, userMessage);
 
-    console.log('next msg: ', e.target.dataset.next)
+    // console.log('next msg: ', e.target.dataset.next)
+    debugger;
+    
+    const nextMessage = this.props.conversation.find(element=>element.id===e.target.dataset.next)
+
+    postMessage(messages, nextMessage);
 
     this.setState({ messages });
   }
