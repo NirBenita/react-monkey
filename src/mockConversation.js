@@ -3,25 +3,28 @@
 
 export default [
     {
+        id: 'welcome',
         user: 'bot',
         value: 'I am the passive agressive chat bot. Im SOOOO happy to meet you',
         replies: [
             {
-                value: '🦄'
+                value: '🦄',
+                next: 'unicorn'
             },
             {
-                value: '🐮'
+                value: '🐮',
+                next: 'cow'
             }
         ]
     },
     {
+        id: 'unicorn',
         user:'bot',
         value:'Ah, I see you went with the unicorn... Yay...'
     },
     {
+        id: 'cow',
         user:'bot',
         value:'A cow! How... Indian'
     }
-
-
 ]

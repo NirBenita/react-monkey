@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import mockConversation from './mockConversation';
 
-export const postMessage = (state, msg) => {
-  // if(!msg.author) return new Error('Whoops!')
-  state.push(msg);
-}
-
+// 📢 A stream of messages
 const Messages = ({messages}) => {
   const MessageFeed = messages.map((msg, i) => {
     return (
@@ -23,15 +19,16 @@ const Messages = ({messages}) => {
   );
 }
 
+// A single message
 const Message = ({message}) =>
   <div>
     {message.value}, by {message.user}
   </div>
 
-// Render a list of possible responses for the user to 
+// 🗣 A list of possible responses
 const Responses = (props) => {
-  const handleClick = e => 
-    console.log(e.target.innerHTML)
+  const handleClick = e => {
+    console.log(e.target.dataset.next)}
 
   const ResponseList = props.responses.map((response, i) => {
     return (
@@ -48,10 +45,11 @@ const Responses = (props) => {
   )
 }
 
-// A single response item
+// A single response
 const Response = (props) =>
-    <button onClick={props.onClick}>{props.response.value}</button>
+    <button data-next={props.response.next} onClick={props.onClick}>{props.response.value}</button>
 
+// The actual app
 export class App extends Component {
   constructor(props) {
     super(props)
@@ -61,9 +59,14 @@ export class App extends Component {
       messages: [welcomeMessage],
       responses: welcomeMessage.replies
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
-  // every bot message can invoke another message and declare the next set of responseses
-  // A response specifies which bot message to fire
+
+  handleSubmit(e){
+    
+  }
+
   render() {
     return (
       <div className="App">
