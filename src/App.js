@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import mockConversation from './mockConversation';
 
 export const postMessage = (state, msg) => {
   // if(!msg.author) return new Error('Whoops!')
   state.push(msg);
-
 }
 
-
-
 const Messages = ({messages}) => {
-  debugger;
   const MessageFeed = messages.map((msg, i) => {
     return (
       <Message
@@ -57,9 +54,10 @@ const Response = (props) =>
 export class App extends Component {
   constructor(props) {
     super(props)
+    const welcomeMessage = mockConversation[0];
     this.state = {
-      messages: props.welcome.value,
-      responses: props.welcome.responses
+      messages: [welcomeMessage],
+      responses: [welcomeMessage.responses]
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
