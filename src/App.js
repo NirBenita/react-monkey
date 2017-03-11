@@ -70,14 +70,9 @@ export class App extends Component {
       value: e.target.innerHTML,
       user: 'user'
     }
-
-    postMessage(messages, userMessage);
-
-    // console.log('next msg: ', e.target.dataset.next)
-    debugger;
-    
     const nextMessage = this.props.conversation.find(element=>element.id===e.target.dataset.next)
 
+    postMessage(messages, userMessage);
     postMessage(messages, nextMessage);
 
     this.setState({ messages });
