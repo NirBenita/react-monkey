@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 
 export const postMessage = (state, msg) => {
@@ -7,11 +8,15 @@ export const postMessage = (state, msg) => {
 
 // 📢 A stream of messages
 const Messages = ({messages}) => {
+
   const MessageFeed = messages.map((msg, i) => {
+
     return (
-      <Message
-        key={i}
-        message={msg} />
+      <ConvoLine fromMe={msg.fromMe}>
+        <Message fromMe={msg.fromMe} key={i}>
+          <span>{msg.value}</span>
+        </Message>
+      </ConvoLine>
     );
   });
 
@@ -22,12 +27,21 @@ const Messages = ({messages}) => {
   );
 }
 
+const ConvoLine = styled.div`
+  display:flex;
+  justify-content: ${ ({fromMe}) => fromMe ? 'flex-end' : 'flex-start'};
+`
+
 // A single message
-const Message = ({message}) =>
-  <div>
-    <span>{message.value}</span><br/>
-    <i>{message.user}</i>
-  </div>
+const Message = styled.div`
+    max-width: 240px;
+    margin: 12px 8px;
+    padding: 8px;
+    min-width:32px;
+    background:${ ({fromMe}) => fromMe ? 'grey' : 'blue'};
+    color: ${ ({fromMe}) => fromMe ? 'black' : 'white'};
+    border-radius:${ ({fromMe}) => fromMe ? '8px 8px 0 8px' : '8px 8px 8px 0'};
+`
 
 // 🗣 A list of possible responses
 const Responses = (props) => {
@@ -48,7 +62,7 @@ const Responses = (props) => {
 
 // A single response
 const Response = (props) =>
-    <button data-next={props.response.next} onClick={props.onClick}>{props.response.value}</button>
+  <button data-next={props.response.next} onClick={props.onClick}>{props.response.value}</button>
 
 // The actual app
 export class App extends Component {
@@ -64,13 +78,13 @@ export class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit(e){		
-    const messages = this.state.messages;		
+  handleSubmit(e) {
+    const messages = this.state.messages;
     let userMessage = {
       value: e.target.innerHTML,
-      user: 'user'
+      fromMe: true
     }
-    const nextMessage = this.props.conversation.find(element=>element.id===e.target.dataset.next)
+    const nextMessage = this.props.conversation.find(element => element.id === e.target.dataset.next)
 
     postMessage(messages, userMessage);
     postMessage(messages, nextMessage);
