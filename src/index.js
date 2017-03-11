@@ -5,5 +5,5 @@ import mockConversation from './mockConversation';
 
 ReactDOM.render(
   <App conversation={mockConversation} />,
-  document.getElementById('root');
+  document.getElementById('root')
 );

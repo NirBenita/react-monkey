@@ -20,7 +20,7 @@ export default [
     {
         id: 'unicorn',
         user:'bot',
-        value:'Ah, I see you went with the unicorn... Yay...'
+        value:'Ah, I see you went with the unicorn... I am ecstatically happy...'
     },
     {
         id: 'cow',
