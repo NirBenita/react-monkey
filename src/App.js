@@ -12,11 +12,11 @@ const Messages = ({messages}) => {
   const MessageFeed = messages.map((msg, i) => {
 
     return (
-      <ConvoLine fromMe={msg.fromMe}>
+      <ConvoRow fromMe={msg.fromMe}>
         <Message fromMe={msg.fromMe} key={i}>
           <span>{msg.value}</span>
         </Message>
-      </ConvoLine>
+      </ConvoRow>
     );
   });
 
@@ -27,9 +27,15 @@ const Messages = ({messages}) => {
   );
 }
 
-const ConvoLine = styled.div`
+const ConvoRow = styled.div`
   display:flex;
   justify-content: ${ ({fromMe}) => fromMe ? 'flex-end' : 'flex-start'};
+`
+
+const ResponseBar = styled.div`
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
 `
 
 // A single message
@@ -47,22 +53,22 @@ const Message = styled.div`
 const Responses = (props) => {
   const ResponseList = props.responses.map((response, i) => {
     return (
-      <Response
+      <Message
+        data-next={response.next}
         key={i}
+        fromMe
         response={response}
-        onClick={props.onMessageSubmit} />
+        onClick={props.onMessageSubmit}>
+        {response.value}
+      </Message>
     );
   })
   return (
-    <div>
+    <ResponseBar>
       {ResponseList}
-    </div>
+    </ResponseBar>
   )
 }
-
-// A single response
-const Response = (props) =>
-  <button data-next={props.response.next} onClick={props.onClick}>{props.response.value}</button>
 
 // The actual app
 export class App extends Component {
