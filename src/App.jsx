@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { Messages, Responses } from './components/chat';
 
-export const postMessage = (state, msg) => {
-  state.push(msg);
-};
+function postMessages(messages) {
+  let messagesToAdd = [ ...arguments ]
+  return function update(state) {
+    let newMessagesfeed = state.messages.slice();
+    newMessagesfeed.push(...messagesToAdd);
+    return {
+      messages: newMessagesfeed
+    }
+  }
+}
 
-// The actual app
 export class App extends Component {
   constructor(props) {
     super(props);
@@ -16,23 +22,23 @@ export class App extends Component {
       responses: welcomeMessage.replies,
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReply = this.handleReply.bind(this);
   }
 
-  handleSubmit(e) {
-    const messages = this.state.messages;
+  handleReply(e) {
     const userMessage = {
       value: e.target.innerHTML,
       fromMe: true,
     };
+
     const nextMessage = this.props.conversation.find(
       element => element.id === e.target.dataset.next
     );
 
-    postMessage(messages, userMessage);
-    postMessage(messages, nextMessage);
+    let responses = nextMessage.replies;
 
-    this.setState({ messages });
+    this.setState(postMessages(userMessage, nextMessage))
+    this.setState({ responses })
   }
 
   render() {
@@ -40,8 +46,17 @@ export class App extends Component {
       <div className="App">
         <h1>React Chat</h1>
         <Messages messages={this.state.messages} />
-        <Responses responses={this.state.responses} onMessageSubmit={this.handleSubmit} />
+        <Responses responses={this.state.responses} onMessageSubmit={this.handleReply} />
       </div>
     );
   }
 }
+
+/* 
+TODO
+  March 17
+  [x] Make sure replies render
+  [ ] Load full conversation
+  [ ] Simplify Messagees/Responses abstraction
+  [ ] Refactor handleReply
+*/

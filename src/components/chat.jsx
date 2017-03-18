@@ -7,7 +7,7 @@ const Message = styled.div`
     margin: 12px 8px;
     padding: 8px;
     min-width:32px;
-    background:${({ fromMe }) => fromMe ? 'grey' : 'blue'};
+    background:${({ fromMe }) => fromMe ? 'GAINSBORO' : 'MEDIUMBLUE'};
     color: ${({ fromMe }) => fromMe ? 'black' : 'white'};
     border-radius:${({ fromMe }) => fromMe ? '8px 8px 0 8px' : '8px 8px 8px 0'};
 `;
@@ -15,8 +15,8 @@ const Message = styled.div`
 // 📢 A stream of messages
 const Messages = ({ messages }) => {
   const MessageFeed = messages.map((msg, i) => (
-    <ConvoRow fromMe={msg.fromMe}>
-      <Message fromMe={msg.fromMe} key={i}>
+    <ConvoRow fromMe={msg.fromMe} key={i}>
+      <Message fromMe={msg.fromMe}>
         <span>{msg.value}</span>
       </Message>
     </ConvoRow>
@@ -47,7 +47,6 @@ const Responses = (props) => {
       data-next={response.next}
       key={i}
       fromMe
-      response={response}
       onClick={props.onMessageSubmit}
     >
       {response.value}

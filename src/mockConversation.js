@@ -5,26 +5,77 @@ export default [
     {
         id: 'welcome',
         user: 'bot',
-        value: 'I am the passive agressive chat bot. Im SOOOO happy to meet you',
+        value: "Welcome. I'm Nir Benita's passive agressive bot, he built me because he's obviously sooo busy, and can't talk to you himself...",
         replies: [
             {
-                value: '🦄',
-                next: 'unicorn'
-            },
-            {
-                value: '🐮',
-                next: 'cow'
+                value: 'Who?',
+                next: 'who'
             }
         ]
     },
     {
-        id: 'unicorn',
+        id: 'who',
         user:'bot',
-        value:'Ah, I see you went with the unicorn... I am ecstatically happy...'
+        value:'I am so happy you asked... Nir Benita is a product designer and front end developer at Wix.com.',
+        replies: [
+            {
+                value: "designer?",
+                next: "designer"
+            },
+            {
+                value: "developer?",
+                next: "developer"
+            }
+        ]
     },
     {
-        id: 'cow',
-        user:'bot',
-        value:'A cow! How... Indian'
+        id: 'designer',
+        users: 'bot',
+        value: 'Nir spends way too much time doing UX/UI design at Wix. He worked on the Wix editor, shoutout, currently working on...',
+        replies: [
+            {
+                value: "📐 designer?",
+                next: "designer"
+            },
+            {
+                value: "🔨 developer?",
+                next: "developer"
+            }
+        ]
+        
+    },
+    {
+        id: 'developer',
+        users: 'bot',
+        value:'Nir is no developer, but he did build this app :)',
+        replies: [
+            {
+                value: "",
+                next: ""
+            },
+            {
+                value: "",
+                next: ""
+            }
+        ]
+        
     }
 ]
+
+// Templates
+// {
+//     id: '',
+//     users: 'bot',
+//     value:'',
+//     replies: [
+//         {
+//             value: "",
+//             next: ""
+//         },
+//         {
+//             value: "",
+//             next: ""
+//         }
+//     ]
+    
+// }
