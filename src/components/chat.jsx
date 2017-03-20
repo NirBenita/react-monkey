@@ -14,6 +14,10 @@ const AppLayout = styled.div`
   > * {
     flex: 1;
   }
+
+  p {
+    margin-bottom:12px;
+  }
 `
 
 // A single message
