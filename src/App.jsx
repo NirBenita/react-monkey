@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { Messages, Responses } from './components/chat';
+import { 
+  Message,
+  Messages,
+  Responses,
+  Navigation,
+  AppLayout
+} from './components/chat';
 
 function postMessages(messages) {
-  let messagesToAdd = [ ...arguments ]
+  let messagesToAdd = [...arguments]
   return function update(state) {
     let newMessagesfeed = state.messages.slice();
     newMessagesfeed.push(...messagesToAdd);
@@ -16,16 +22,25 @@ export class App extends Component {
   constructor(props) {
     super(props);
     const welcomeMessage = props.conversation[0];
+    const toPin = props.conversation.find(
+      element => element.id === 'toPin'
+    );
 
     this.state = {
       messages: [welcomeMessage],
       responses: welcomeMessage.replies,
+      firstTime: true,
+      toPin: toPin
     };
 
     this.handleReply = this.handleReply.bind(this);
   }
 
   handleReply(e) {
+
+    if (this.state.firstTime) {
+      this.setState({ firstTime: false })
+    };
     const userMessage = {
       value: e.target.innerHTML,
       fromMe: true,
@@ -43,11 +58,25 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>React Chat</h1>
-        <Messages messages={this.state.messages} />
-        <Responses responses={this.state.responses} onMessageSubmit={this.handleReply} />
-      </div>
+      <AppLayout className="App">
+        <Navigation>
+          <p>
+            Hi! This is Nir, welcome to my website! I’m sorry I couldn’t be here to greet you myself, but I left my bot to answer your questions. I’m still working out some kinks with his attitude, but I’m sure you’ll get a long 💜
+          </p>
+          <p>
+            Here are some links you might be looking for, to save you some time:
+          </p>
+          <ul>
+            <li><a href="">Twitter</a></li>
+            <li><a href="">Github</a></li>
+            <li><a href="">Medium</a></li>
+          </ul>
+        </Navigation>
+        <div style={{overflow:'auto', height: '100vh'}}>
+          <Messages messages={this.state.messages} />
+          <Responses responses={this.state.responses} onMessageSubmit={this.handleReply} firstTime={this.state.firstTime} />
+        </div>
+      </AppLayout>
     );
   }
 }
@@ -56,7 +85,12 @@ export class App extends Component {
 TODO
   March 17
   [x] Make sure replies render
-  [ ] Load full conversation
-  [ ] Simplify Messagees/Responses abstraction
+  [x] Load full conversation
   [ ] Refactor handleReply
+  [x] Add a click hint
+  [x] Add left bar
+  [ ] Match Sketch styles
+  [ ] Can the bot undersatnd the job of the person arriving on my site?
+  [ ] Allow the bot to chain messages
+  [ ] Typing animation
 */

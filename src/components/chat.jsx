@@ -1,15 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Navigation = styled.nav`
+  background: ghostwhite;
+  max-width:240px;
+  float: left;
+  height: 100vh;
+  padding: 12px;
+`
+const AppLayout = styled.div`
+  display:flex;
+
+  > * {
+    flex: 1;
+  }
+`
+
 // A single message
 const Message = styled.div`
-    max-width: 240px;
-    margin: 12px 8px;
-    padding: 8px;
+    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.08);
+    max-width: 360px;
     min-width:32px;
-    background:${({ fromMe }) => fromMe ? 'GAINSBORO' : 'MEDIUMBLUE'};
+    margin: 12px 8px;
+    padding: 12px;
+    background:${({ fromMe }) => fromMe ? '#F7F7F7' : '#5180FF'};
     color: ${({ fromMe }) => fromMe ? 'black' : 'white'};
     border-radius:${({ fromMe }) => fromMe ? '8px 8px 0 8px' : '8px 8px 8px 0'};
+
+    &.pinned{
+      max-width:none;
+    }
 `;
 
 // 📢 A stream of messages
@@ -38,6 +58,10 @@ const ResponseBar = styled.div`
   display:flex;
   flex-direction: row;
   justify-content: center;
+
+  .hint {
+    align-self: center;
+  }
 `;
 
 // 🗣 A list of possible responses
@@ -54,12 +78,16 @@ const Responses = (props) => {
     ));
   return (
     <ResponseBar>
+      {props.firstTime ? <span className="hint">Click me 👉</span> : null}
       {ResponseList}
     </ResponseBar>
   );
 };
 
 export {
+    Message,
     Messages,
     Responses,
+    Navigation,
+    AppLayout
 };
