@@ -44,7 +44,7 @@ const Messages = ({ messages }) => {
         <span>{msg.value}</span>
       </Message>
     </ConvoRow>
-    ));
+  ));
 
   return (
     <div>
@@ -69,29 +69,28 @@ const ResponseBar = styled.div`
 `;
 
 // 🗣 A list of possible responses
-const Responses = (props) => {
-  const ResponseList = props.responses.map((response, i) => (
+const Responses = ({messages, onMessageSubmit, firstTime}) => {
+  const ResponseList = messages.map((message, i) => (
     <Message
-      data-next={response.next}
+      data-next={message.next}
       key={i}
       fromMe
-      onClick={props.onMessageSubmit}
+      onClick={() => onMessageSubmit(message)}
     >
-      {response.value}
+      {message.value}
     </Message>
-    ));
+  ));
   return (
     <ResponseBar>
-      {props.firstTime ? <span className="hint">Click me 👉</span> : null}
+      {firstTime ? <span className="hint">Click me 👉</span> : null}
       {ResponseList}
     </ResponseBar>
   );
 };
 
 export {
-    Message,
-    Messages,
-    Responses,
-    Navigation,
-    AppLayout
+  Messages,
+  Responses,
+  Navigation,
+  AppLayout
 };

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { 
-  Message,
+import {
   Messages,
   Responses,
   Navigation,
@@ -36,18 +35,16 @@ export class App extends Component {
     this.handleReply = this.handleReply.bind(this);
   }
 
-  handleReply(e) {
+  handleReply(userMessage) {
+
+    userMessage.fromMe = true;
 
     if (this.state.firstTime) {
       this.setState({ firstTime: false })
     };
-    const userMessage = {
-      value: e.target.innerHTML,
-      fromMe: true,
-    };
-
+    
     const nextMessage = this.props.conversation.find(
-      element => element.id === e.target.dataset.next
+      element => element.id === userMessage.next
     );
 
     let responses = nextMessage.replies;
@@ -72,9 +69,9 @@ export class App extends Component {
             <li><a href="">Medium</a></li>
           </ul>
         </Navigation>
-        <div style={{overflow:'auto', height: '100vh'}}>
+        <div style={{ overflow: 'auto', height: '100vh' }}>
           <Messages messages={this.state.messages} />
-          <Responses responses={this.state.responses} onMessageSubmit={this.handleReply} firstTime={this.state.firstTime} />
+          <Responses messages={this.state.responses} onMessageSubmit={this.handleReply} firstTime={this.state.firstTime} />
         </div>
       </AppLayout>
     );
