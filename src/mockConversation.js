@@ -5,7 +5,7 @@ export default [
     {
         id: 'welcome',
         user: 'bot',
-        value: "Ugh... Hi, welcome to Nir's website. Nir built me because he's obviously sooo busy, and can't talk to you himself...",
+        value: "Hi, welcome to Nir's website. Nir built me because he's obviously sooo busy, and can't talk to you himself...",
         replies: [
             {
                 value: 'Who?',
@@ -16,14 +16,14 @@ export default [
     {
         id: 'who',
         user: 'bot',
-        value: 'I am so happy you asked 😒... Nir Benita is a product designer at Wix.com, currently focused on improving the Developer Experience inside the company',
+        value: 'I am so happy you asked 😒... Nir Benita is a Product Designer at Wix.com, currently working on improving the Developer Experience inside the company',
         replies: [
             {
-                value: "📐 designer?",
+                value: "📐 A Product Designer?",
                 next: "designer"
             },
             {
-                value: "🔨 developer?",
+                value: "👍",
                 next: "developer"
             }
         ]
@@ -31,7 +31,7 @@ export default [
     {
         id: 'designer',
         users: 'bot',
-        value: 'Nir spends way too much time doing UX/UI design at Wix. He worked on the Wix editor, shoutout, currently working on...',
+        value: 'He`s no Dieter Rams... But he did get to work on some interesting projects like the Wix Editor, as well as some open source projects',
         replies: [
             {
                 value: "So, he makes things pretty?",
@@ -47,7 +47,7 @@ export default [
     {
         id: 'developer',
         users: 'bot',
-        value: 'Regarding web development, he writes Javascript (React JS, specifically). He will also write some Arduino code on special occasions.',
+        value: 'Besides design, Nir is learning front-end developement, which is how he got to his current position, working on Developer Experience. Such a NERD 🤓',
         replies: [
             {
                 value: "What did he build",
@@ -63,7 +63,7 @@ export default [
     {
         id: 'makePretty',
         users: 'bot',
-        value: 'wow, you obviously know so much about design... If you have a few minutes, checkout one of his articles on [Medium]()',
+        value: 'Ugh, you obviously know so much about design... Less Pretty, more Useful, or Usable. If you have a few minutes, checkout one of his articles on [Medium]()',
         replies: [
             {
                 value: "👍",
@@ -75,7 +75,7 @@ export default [
     {
         id: 'devWork',
         users: 'bot',
-        value: 'Most of the code he wrote is used internally at Wix, but here are some Github repos:',
+        value: 'First of all, he built me, and I am kind of amazing... If want to see anny of his other projects, here are some Github repos',
         replies: [
             {
                 value: "👍",
@@ -87,7 +87,7 @@ export default [
     {
         id: 'done',
         users: 'bot',
-        value: "it's a good thing Nir isn't interesting, because that means we're done 🙌. I you'd like to talk to him directly, I would suggest reaching out on (Twitter)[]",
+        value: "it's a good thing Nir isn't interesting, because that means we're done 🙌. If you'd like to talk to him directly, I would suggest reaching out on (Twitter)[]",
         replies: [
             {
                 value: "",
@@ -99,11 +99,6 @@ export default [
             }
         ]
     },
-    {
-        id: 'toPin',
-        users: 'benita',
-        value: 'Hi! This is Nir, welcome to my website! I’m sorry I couldn’t be here to greet you myself, but I left my bot to answer your questions. I’m still working out some kinks with his attitude, but I’m sure you’ll get a long 💜',
-    }
 ]
 
 // Templates

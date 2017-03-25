@@ -72,7 +72,6 @@ const ResponseBar = styled.div`
 const Responses = ({messages, onMessageSubmit, firstTime}) => {
   const ResponseList = messages.map((message, i) => (
     <Message
-      data-next={message.next}
       key={i}
       fromMe
       onClick={() => onMessageSubmit(message)}

@@ -48,7 +48,7 @@ export class App extends Component {
     );
 
     let responses = nextMessage.replies;
-
+    
     this.setState(postMessages(userMessage, nextMessage))
     this.setState({ responses })
   }
@@ -83,11 +83,13 @@ TODO
   March 17
   [x] Make sure replies render
   [x] Load full conversation
-  [ ] Refactor handleReply
   [x] Add a click hint
   [x] Add left bar
-  [ ] Match Sketch styles
-  [ ] Can the bot undersatnd the job of the person arriving on my site?
+  [x] Match Sketch styles
+  [x] Refactor handleReply to pass the actual message
   [ ] Allow the bot to chain messages
   [ ] Typing animation
+  [ ] Add markdown support
+  [ ] Add Typescript support
+  [ ] Add Image and Link message components
 */
