@@ -1,4 +1,4 @@
-🚧 Project is underconstruction 🚧
+🚧 This project is under construction 🚧
 # React Monkey 
 React Monkey is a tiny project for building Dialog-Tree chat appliactions.
 
