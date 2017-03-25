@@ -6,7 +6,7 @@ const Navigation = styled.nav`
   max-width:300px;
   float: left;
   height: 100vh;
-  padding: 24px;
+  padding: 12px;
 `
 const AppLayout = styled.div`
   display:flex;
