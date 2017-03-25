@@ -5,7 +5,7 @@ export default [
     {
         id: 'welcome',
         user: 'bot',
-        value: "Hi, welcome to Nir's website. Nir built me because he's obviously sooo busy, and can't talk to you himself...",
+        value: "🤖👋, welcome to Nir's website. Nir built me because he's obviously soooo busy, and can't talk to you himself...",
         replies: [
             {
                 value: 'Who?',
@@ -47,7 +47,7 @@ export default [
     {
         id: 'developer',
         users: 'bot',
-        value: 'Besides design, Nir is learning front-end developement, which is how he got to his current position, working on Developer Experience. Such a NERD 🤓',
+        value: 'Besides design, Nir is learning front-end developement, which is how he got to his current position, working on Developer Experience at Wix. Such a NERD 🤓',
         replies: [
             {
                 value: "What did he build",

@@ -58,7 +58,7 @@ export class App extends Component {
       <AppLayout className="App">
         <Navigation>
           <p>
-            Hi! This is Nir, welcome to my website! I’m sorry I couldn’t be here to greet you myself, but I left my bot to answer your questions. I’m still working out some kinks with his attitude, but I’m sure you’ll get a long 💜
+            Hi! This is Nir, welcome to my website! I’m sorry I couldn’t be here to greet you myself, but I left my 🤖 to answer your questions. I’m still working out some kinks with his attitude, but I’m sure you’ll get a long 💜
           </p>
           <p>
             Here are some links you might be looking for, to save you some time:

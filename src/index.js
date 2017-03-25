@@ -4,6 +4,7 @@ import { App } from './App';
 import mockConversation from './mockConversation';
 import { injectGlobal } from 'styled-components';
 
+// eslint-disable-next-line
 injectGlobal`
     * {
         padding:0;
@@ -18,7 +19,7 @@ injectGlobal`
         width: 100%;
         font-family: "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
       }
-`
+`;
 
 ReactDOM.render(
   <App conversation={mockConversation} />,

@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Navigation = styled.nav`
-  background: ghostwhite;
-  max-width:240px;
+  background: white;
+  max-width:300px;
   float: left;
   height: 100vh;
-  padding: 12px;
+  padding: 24px;
 `
 const AppLayout = styled.div`
   display:flex;
@@ -25,7 +25,7 @@ const Message = styled.div`
     box-shadow: 0 8px 8px 0 rgba(0,0,0,0.08);
     max-width: 360px;
     min-width:32px;
-    margin: 12px 8px;
+    margin: 12px;
     padding: 12px;
     background:${({ fromMe }) => fromMe ? '#F7F7F7' : '#5180FF'};
     color: ${({ fromMe }) => fromMe ? 'black' : 'white'};
