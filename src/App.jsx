@@ -56,12 +56,24 @@ export class App extends Component {
   render() {
     return (
       <AppLayout className="App">
-        
-        <div style={{ overflow: 'auto', height: '100vh' }}>
           <Messages messages={this.state.messages} />
           <Responses messages={this.state.responses} onMessageSubmit={this.handleReply} firstTime={this.state.firstTime} />
-        </div>
       </AppLayout>
     );
   }
 }
+/* 
+TODO
+  [x] Make sure replies render
+  [x] Load full conversation
+  [x] Add a click hint
+  [x] Add left bar
+  [x] Match Sketch styles
+  [x] Refactor handleReply to pass the actual message
+  [ ] Allow the bot to chain messages
+  [ ] Typing animation
+  [x] Add markdown support
+  [ ] Add Typescript support
+  [ ] Add Image and Link message components
+  [ ] Start message feed from bottom
+*/

@@ -22,7 +22,7 @@ const Link = styled.a`
 
 const AppLayout = styled.div`
   display:flex;
-
+  flex-direction:column;
   > * {
     flex: 1;
   }
