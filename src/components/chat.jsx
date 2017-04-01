@@ -5,12 +5,15 @@ import MTRC from 'markdown-to-react-components';
 MTRC.configure({
   a: React.createClass({
     render() {
-      return <Link target="_blank" href={this.props.href} value={this.props.id}>{this.props.children}</Link>
+      return <MessageLink 
+        target="_blank"
+        href={this.props.href}
+        value={this.props.id}>{this.props.children}</MessageLink>
     }
   })
 });
 
-const Link = styled.a`
+const MessageLink = styled.a`
   font-weight: bold;
   color:white;
   transition: 0.2s color ease-in;

@@ -57,7 +57,11 @@ export class App extends Component {
     return (
       <AppLayout className="App">
           <Messages messages={this.state.messages} />
-          <Responses messages={this.state.responses} onMessageSubmit={this.handleReply} firstTime={this.state.firstTime} />
+          <Responses 
+            messages={this.state.responses}
+            onMessageSubmit={this.handleReply}
+            firstTime={this.state.firstTime} 
+          />
       </AppLayout>
     );
   }
@@ -75,5 +79,5 @@ TODO
   [x] Add markdown support
   [ ] Add Typescript support
   [ ] Add Image and Link message components
-  [ ] Start message feed from bottom
+  [ ] Scroll to bottom
 */
