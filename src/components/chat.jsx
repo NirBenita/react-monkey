@@ -103,6 +103,5 @@ const Responses = ({messages, onMessageSubmit, firstTime}) => {
 export {
   Messages,
   Responses,
-  Navigation,
   AppLayout
 };

@@ -5,101 +5,53 @@ export default [
     {
         id: 'welcome',
         user: 'bot',
-        value: "🤖👋, welcome to Nir's website. Nir built me because he's obviously soooo busy, and can't talk to you himself...",
+        value: "🤖👋, to **React Monkey**",
         replies: [
             {
-                value: 'Who?',
-                next: 'who'
+                value: 'React what now?',
+                next: 'what'
             }
         ]
     },
     {
-        id: 'who',
+        id: 'what',
         user: 'bot',
-        value: 'I am so happy you asked 😒... Nir Benita is a Product Designer at Wix.com, currently working on improving the Developer Experience inside the company',
+        value: 'React Monkey is a tiny project for building Dialog-Tree chat appliactions.',
         replies: [
             {
-                value: "📐 A Product Designer?",
-                next: "designer"
+                value: "Why would I need that?",
+                next: "why"
             },
             {
-                value: "👍",
-                next: "developer"
+                value: "Ah, finally!",
+                next: "finally"
             }
         ]
     },
     {
-        id: 'designer',
+        id: 'why',
         users: 'bot',
-        value: 'He`s no Dieter Rams... But he did get to work on some interesting projects like the Wix Editor, as well as some open source projects',
+        value: "Not sure, better go [here to find out](https://github.com/NirBenita/react-monkey)",
         replies: [
             {
-                value: "So, he makes things pretty?",
-                next: "makePretty"
-            },
-            {
                 value: "👍",
-                next: "developer"
+                next: "finally"
             }
         ]
 
     },
     {
-        id: 'developer',
+        id: 'finally',
         users: 'bot',
-        value: 'Besides design, Nir is learning front-end developement, which is how he got to his current position, working on Developer Experience at Wix. Such a NERD 🤓',
+        value: 'If you have a minute, you can learn a lot more about this project [here](https://www.youtube.com/watch?v=ye6yNLsdUCE)',
         replies: [
             {
-                value: "What did he build",
-                next: "done"
-            },
-            {
-                value: "👍",
-                next: "designer"
+                value: "what did I just see?",
+                next: "why"
             }
         ]
 
-    },
-    {
-        id: 'makePretty',
-        users: 'bot',
-        value: 'Ugh, you obviously know so much about design... Less Pretty, more Useful, or Usable. He sometimes likes to [write about it](https://medium.com/@nirbenita)... Shocking, I know',
-        replies: [
-            {
-                value: "👍",
-                next: "developer"
-            }
-        ]
-
-    },
-    {
-        id: 'devWork',
-        users: 'bot',
-        value: 'Great, no more questions! Ah, well he built me, but that is not very impressive... I seem to be blocked from the Wix codebase, but here are [some public repos on Github](https://github.com/NirBenita)',
-        replies: [
-            {
-                value: "👍",
-                next: "done"
-            }
-        ]
-
-    },
-    {
-        id: 'done',
-        users: 'bot',
-        value: "it's a good thing Nir isn't interesting, because that means we're done 🙌. If you'd like to talk to him directly, I would suggest reaching out on (Twitter)[]",
-        replies: [
-            {
-                value: "",
-                next: ""
-            },
-            {
-                value: "",
-                next: ""
-            }
-        ]
-    },
-]
+    }]
 
 // Templates
 // {
