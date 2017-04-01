@@ -75,7 +75,7 @@ export default [
     {
         id: 'devWork',
         users: 'bot',
-        value: 'First of all, he built me, and I am kind of amazing... If want to see anny of his other projects, here are some Github repos',
+        value: 'Great, no more questions! Ah, well he built me, but that is not very impressive... I seem to be blocked from the Wix codebase, but here are [some public repos on Github](https://github.com/NirBenita)',
         replies: [
             {
                 value: "👍",

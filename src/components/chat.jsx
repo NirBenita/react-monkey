@@ -2,14 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import MTRC from 'markdown-to-react-components';
 
+MTRC.configure({
+  a: React.createClass({
+    render() {
+      return <Link target="_blank" href={this.props.href} value={this.props.id}>{this.props.children}</Link>
+    }
+  })
+});
 
-const Navigation = styled.nav`
-  background: white;
-  max-width:300px;
-  float: left;
-  height: 100vh;
-  padding: 12px;
+const Link = styled.a`
+  font-weight: bold;
+  color:white;
+  transition: 0.2s color ease-in;
+
+  &:hover {
+    color:#c2e0ff;
+  }
 `
+
 const AppLayout = styled.div`
   display:flex;
 
