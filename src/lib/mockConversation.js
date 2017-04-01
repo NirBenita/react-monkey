@@ -51,7 +51,7 @@ export default [
         replies: [
             {
                 value: "What did he build",
-                next: "devWork"
+                next: "done"
             },
             {
                 value: "👍",
@@ -63,7 +63,7 @@ export default [
     {
         id: 'makePretty',
         users: 'bot',
-        value: 'Ugh, you obviously know so much about design... Less Pretty, more Useful, or Usable. If you have a few minutes, checkout one of his articles on [Medium]()',
+        value: 'Ugh, you obviously know so much about design... Less Pretty, more Useful, or Usable. He sometimes likes to [write about it](https://medium.com/@nirbenita)... Shocking, I know',
         replies: [
             {
                 value: "👍",

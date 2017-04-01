@@ -8,6 +8,7 @@
     "react-scripts": "0.9.5"
   },
   "dependencies": {
+    "markdown-to-react-components": "^0.2.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "styled-components": "^1.4.4"

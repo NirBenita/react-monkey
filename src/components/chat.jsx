@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import MTRC from 'markdown-to-react-components';
+
 
 const Navigation = styled.nav`
   background: white;
@@ -38,10 +40,11 @@ const Message = styled.div`
 
 // 📢 A stream of messages
 const Messages = ({ messages }) => {
+  
   const MessageFeed = messages.map((msg, i) => (
     <ConvoRow fromMe={msg.fromMe} key={i}>
       <Message fromMe={msg.fromMe}>
-        <span>{msg.value}</span>
+        <div>{MTRC(msg.value).tree}</div>
       </Message>
     </ConvoRow>
   ));

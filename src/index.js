@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
-import mockConversation from './mockConversation';
+import mockConversation from './lib/mockConversation';
 import { injectGlobal } from 'styled-components';
 
-// eslint-disable-next-line
+// eslint-disable-next-line no-unused-expressions
 injectGlobal`
     * {
         padding:0;
