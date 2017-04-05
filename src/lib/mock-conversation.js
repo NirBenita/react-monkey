@@ -17,6 +17,7 @@ export default [
         id: 'what',
         user: 'bot',
         value: 'React Monkey is a tiny project for building Dialog-Tree chat appliactions.',
+        chain: 'monkeyIsland',
         replies: [
             {
                 value: "Why would I need that?",
@@ -50,9 +51,14 @@ export default [
                 next: "why"
             }
         ]
-
-    }]
-
+    },
+    {
+        id: 'monkeyIsland',
+        users: 'bot',
+        value: "It's basically like those dialogs you had with non-player characters (NPC) in games like Escape From Monkey Island 🐒",
+    },
+]
+// 
 // Templates
 // {
 //     id: '',

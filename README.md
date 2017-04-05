@@ -10,3 +10,24 @@ This project is using create-react-app, and so to run it, simply:
 
 ## Build your own story
 The app accepts an array of "Message" objects, each containing a message to view, and a list of possible replies.
+``` json
+{
+        id: 'what',
+        // This is the id of the message, we use these to point specific messages from the conversation
+        value: 'React Monkey is a tiny project for building Dialog-Tree chat appliactions.',
+        // This is the content of the message to be displayed
+        chain: 'monkeyIsland',
+        // You can point to another message to break text down into smaller chunks
+        replies: [
+            // This is the repleis that will be avilable to the user
+            {
+                value: "Why would I need that?",
+                next: "why"
+            },
+            {
+                value: "Ah, finally!",
+                next: "finally"
+            }
+        ]
+    },
+```
