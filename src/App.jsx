@@ -47,10 +47,18 @@ export class App extends Component {
       element => element.id === userMessage.next
     );
 
+
     let responses = nextMessage.replies;
     
     this.setState(postMessages(userMessage, nextMessage))
     this.setState({ responses })
+    
+    if(nextMessage.chain){
+      const msgToChain = this.props.conversation.find(
+        element => element.id === nextMessage.chain
+      );
+      this.setState(postMessages(msgToChain))
+    }
   }
 
   render() {
@@ -74,7 +82,7 @@ TODO
   [x] Add left bar
   [x] Match Sketch styles
   [x] Refactor handleReply to pass the actual message
-  [ ] Allow the bot to chain messages
+  [x] Allow the bot to chain messages
   [ ] Typing animation
   [x] Add markdown support
   [ ] Add Typescript support

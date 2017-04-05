@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
-import mockConversation from './lib/mockConversation';
+import conversation from './lib/mock-conversation';
 import { injectGlobal } from 'styled-components';
 
 // eslint-disable-next-line no-unused-expressions
@@ -22,6 +22,6 @@ injectGlobal`
 `;
 
 ReactDOM.render(
-  <App conversation={mockConversation} />,
+  <App conversation={conversation} />,
   document.getElementById('root')
 );
