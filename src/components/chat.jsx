@@ -49,6 +49,15 @@ const Message = styled.div`
     &.pinned{
       max-width:none;
     }
+
+    &.reply {
+      cursor:pointer;
+      transition: 0.2s background ease-in;
+    }
+
+    &.reply:hover{
+      background:#f1f1f1;
+    }
 `;
 
 // 📢 A stream of messages
@@ -91,6 +100,7 @@ const Responses = ({messages, onMessageSubmit, firstTime}) => {
       key={i}
       fromMe
       onClick={() => onMessageSubmit(message)}
+      className="reply"
     >
       {message.value}
     </Message>

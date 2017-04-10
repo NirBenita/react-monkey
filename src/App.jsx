@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import {
   Messages,
@@ -16,6 +17,26 @@ function postMessages(messages) {
     }
   }
 }
+
+const TopBar = styled.div`
+  height:48px;
+  background-color:white;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
+  display:flex;
+  padding: 0px 12px;
+
+  * {
+    flex:1;
+    line-height:48px;
+  }
+  .main {
+    text-align:left;
+  }
+  .secondary {
+    text-align:right;
+  }
+
+`
 
 export class App extends Component {
   constructor(props) {
@@ -64,8 +85,16 @@ export class App extends Component {
   render() {
     return (
       <AppLayout className="App">
-          <Messages messages={this.state.messages} />
-          <Responses 
+          <TopBar className="top-bar">
+            <div className="main" >
+              <a target="_blank" href="https://twitter.com/@NirBenita">[x] @NirBenita</a>
+            </div>
+            <div className="secondary" >
+              <a target="_blank" href="https://github.com/NirBenita/react-monkey">[x] Fork</a>
+            </div>
+            </TopBar>
+          <Messages style messages={this.state.messages} />
+          <Responses className="responses"
             messages={this.state.responses}
             onMessageSubmit={this.handleReply}
             firstTime={this.state.firstTime} 

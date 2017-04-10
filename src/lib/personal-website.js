@@ -5,7 +5,7 @@ export default [
     {
         id: 'welcome',
         user: 'bot',
-        value: "👋 Welcome to Nir Benita's website. Nir built me because he's obviously soooo busy, and can't talk to you himself...",
+        value: "👋 Welcome I'm Nir Benita's personal bot. Nir built me because he's obviously soooo busy, and can't talk to you himself...",
         replies: [
             {
                 value: 'Who?',
@@ -75,7 +75,7 @@ export default [
     {
         id: 'devWork',
         users: 'bot',
-        value: "Great, no more quest... Ah, well he built me, but I'm not sure that's all that impressive... I seem to be blocked from the Wix codebase, but here are [some public repos on Github](https://github.com/NirBenita)",
+        value: "Great, no more quest... Ah, well he built me, but I'm not sure that's all that impressive... here are some more meh-worthy, [public repos on Github](https://github.com/NirBenita)",
         replies: [
             {
                 value: "👍",
@@ -87,14 +87,14 @@ export default [
     {
         id: 'done',
         users: 'bot',
-        value: "If you don't mind, I'm trying to find something more entertaining than this conversation, like watching my plants grow.",
+        value: "I REALLY enjoyed talking to you, I don't know what I'll do now that you're leaving (🎉🍻)",
         chain: 'contactMe',
         replies: []
     },
     {
         id: 'contactMe',
         users: 'bot',
-        value: "If you have any problems with my attitude, you can [complain here](twitter.com/NirBenita)",
+        value: "For questions, (or complaints about my attitude) reach out [on 🐓 Twitter!](twitter.com/NirBenita)",
     },
 
 ]

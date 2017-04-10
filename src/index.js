@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
-import conversation from './lib/mock-conversation';
+import conversation from './lib/personal-website';
 import { injectGlobal } from 'styled-components';
 
 // eslint-disable-next-line no-unused-expressions
