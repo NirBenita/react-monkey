@@ -44,7 +44,7 @@ const Message = styled.div`
     padding: 12px;
     background:${({ fromMe }) => fromMe ? '#F7F7F7' : '#5180FF'};
     color: ${({ fromMe }) => fromMe ? 'black' : 'white'};
-    border-radius:${({ fromMe }) => fromMe ? '8px 8px 0 8px' : '8px 8px 8px 0'};
+    border-radius:${({ fromMe }) => fromMe ? '8px 0px 8px 8px' : '0px 8px 8px 8px'};
 
     &.pinned{
       max-width:none;
@@ -62,9 +62,14 @@ const Message = styled.div`
 
 // 📢 A stream of messages
 const Messages = ({ messages }) => {
+  const Avatar = () => <img 
+        className="avatar"
+        src="https://cloud.githubusercontent.com/assets/2289769/20545056/9fa044ea-b115-11e6-9314-ba3e6516e573.png"
+        alt="avatar" />
   
   const MessageFeed = messages.map((msg, i) => (
     <ConvoRow fromMe={msg.fromMe} key={i}>
+      {!msg.fromMe ? <Avatar /> : null}
       <Message fromMe={msg.fromMe}>
         <div>{MTRC(msg.value).tree}</div>
       </Message>
@@ -81,6 +86,11 @@ const Messages = ({ messages }) => {
 const ConvoRow = styled.div`
   display:flex;
   justify-content: ${({ fromMe }) => fromMe ? 'flex-end' : 'flex-start'};
+
+  .avatar {
+    height:36px;
+    margin: 12px 0px 12px 12px;
+  }
 `;
 
 const ResponseBar = styled.div`

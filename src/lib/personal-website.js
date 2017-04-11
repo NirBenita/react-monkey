@@ -5,7 +5,7 @@ export default [
     {
         id: 'welcome',
         user: 'bot',
-        value: "👋 Welcome I'm Nir Benita's personal bot. Nir built me because he's obviously soooo busy, and can't talk to you himself...",
+        value: "👋 Welcome I'm Nir Benita's passive-agressive bot. Nir built me because he's obviously soooo busy, and can't talk to you himself...",
         replies: [
             {
                 value: 'Who?',
