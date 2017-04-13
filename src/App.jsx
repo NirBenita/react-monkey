@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {findDOMNode} from 'react-dom';
 
 import {
   Messages,
   Responses,
-  AppLayout
+  AppLayout,
+  Header
 } from './components/chat';
 
 function postMessages(messages) {
@@ -33,6 +35,12 @@ export class App extends Component {
     };
 
     this.handleReply = this.handleReply.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
+  }
+
+  componentDidUpdate() {
+    // var node = findDOMNode(this);
+    // node.scrollTop = node.scrollHeight;
   }
 
   handleReply(userMessage) {
@@ -64,6 +72,9 @@ export class App extends Component {
   render() {
     return (
       <AppLayout className="App">
+          <Header>
+            <span> - TODAY - </span>
+          </Header>
           <Messages messages={this.state.messages} />
           <Responses
             messages={this.state.responses}
@@ -88,7 +99,7 @@ TODO
   [ ] Add Typescript support
   [ ] Add Image and Link message components
   [ ] Scroll to bottom on msg add
-  [ ] bot avatar
+  [x] bot avatar
   [ ] contact me shortcut
   [ ] Add current time
 */

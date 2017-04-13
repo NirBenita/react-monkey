@@ -14,16 +14,15 @@ MTRC.configure({
 });
 
 const Header = styled.header`
-  border: 0;
-  border-top: 4px solid;
-  border-image: linear-gradient(156deg, #84FAB0 0%, #8FD3F4 100%) 1 0%;
-  line-height: 70px;
-height: 70px;
+  border-width: 4px;
+  border-top-style: solid;
+  border-image: linear-gradient(to right, #84FAB0, #8FD3F4) 1 0%;
+  line-height:48px;
+  height:48px;
   text-align:center;
-  background-image: linear-gradient(-180deg, #FFFFFF 48%, rgba(255,255,255,0.00) 100%);
 
-  >span {
-    color:#5F6061
+  >span{
+    opacity:.5;
   }
 `
 
