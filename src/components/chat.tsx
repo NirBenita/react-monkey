@@ -72,7 +72,7 @@ const Message = styled.div`
 `;
 
 // 📢 A stream of messages
-const Messages = ({ messages:Message[] }) => {
+const Messages = ({ messages:MessageType[] }) => {
   const Avatar = () => <img 
         className="avatar"
         src="https://cloud.githubusercontent.com/assets/2289769/20545056/9fa044ea-b115-11e6-9314-ba3e6516e573.png"
