@@ -1,22 +1,26 @@
 {
-  "name": "react-chat",
+  "name": "react-monkey-ts",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "enzyme": "^2.7.1",
-    "react-addons-test-utils": "^15.4.2",
-    "react-scripts": "0.9.5"
-  },
   "dependencies": {
+    "@types/jest": "^19.2.2",
+    "@types/node": "^7.0.12",
+    "@types/react": "^15.0.21",
+    "@types/react-dom": "^0.14.23",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "react-scripts-ts": "1.2.0",
     "markdown-to-react-components": "^0.2.4",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "styled-components": "^1.4.4"
+    "styled-components": "^1.4.4",
+    "@types/react": "^15.0.21",
+    "@types/react-dom": "^0.14.23"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
   }
 }

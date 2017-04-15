@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 
 import {Messages, Responses, AppLayout, Header} from './components/chat';
+import {Message, Reply} from './typings'
 
-function postMessages(messages) {
-  let messagesToAdd = [...arguments]
-  return function update(state) {
+function postMessages(messages:Message[]) {
+  let messagesToAdd = [...messages]
+  return function update(state:any) {
     let newMessagesfeed = state
       .messages
       .slice();
@@ -14,19 +15,26 @@ function postMessages(messages) {
   }
 }
 
-export class App extends Component {
-  constructor(props) {
+
+interface MyProps{
+  conversation:any[]
+}
+interface MyState{
+  firstTime:boolean,
+  messages: Message[],
+  responses: Reply[],
+
+}
+export default class App extends React.Component<MyProps, MyState> {
+  messagesEnd: HTMLDivElement;
+  constructor(props:MyProps) {
     super(props);
     const welcomeMessage = props.conversation[0];
-    const toPin = props
-      .conversation
-      .find(element => element.id === 'toPin');
 
     this.state = {
       messages: [welcomeMessage],
       responses: welcomeMessage.replies,
-      firstTime: true,
-      toPin: toPin
+      firstTime: true
     };
 
     this.handleReply = this
@@ -50,28 +58,24 @@ export class App extends Component {
     this.scrollToBottom();
   }
 
-  handleReply(userMessage) {
-
-    userMessage.fromMe = true;
+  handleReply(reply:Reply) {
 
     if (this.state.firstTime) {
       this.setState({firstTime: false})
     };
 
     const nextMessage = this
-      .props
-      .conversation
-      .find(element => element.id === userMessage.next);
+      .props.conversation
+      .find(msg => msg.id === reply.next);
 
-    let responses = nextMessage.replies;
+    let nextResponses = nextMessage.replies;
 
-    this.setState(postMessages(userMessage, nextMessage))
-    this.setState({responses})
+    this.setState(postMessages([reply, nextMessage]))
+    this.setState({responses:nextResponses})
 
     if (nextMessage.chain) {
       const msgToChain = this
-        .props
-        .conversation
+        .props.conversation
         .find(element => element.id === nextMessage.chain);
       this.setState(postMessages(msgToChain))
     }

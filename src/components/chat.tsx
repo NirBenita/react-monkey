@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 import MTRC from 'markdown-to-react-components';
+import {Message as MessageType, Reply as ReplyType} from '../typings'
 
 MTRC.configure({
   a: React.createClass({
@@ -14,15 +15,16 @@ MTRC.configure({
 });
 
 const Header = styled.header`
-  border-width: 4px;
-  border-top-style: solid;
-  border-image: linear-gradient(to right, #84FAB0, #8FD3F4) 1 0%;
-  line-height:48px;
-  height:48px;
+  border: 0;
+  border-top: 4px solid;
+  border-image: linear-gradient(156deg, #84FAB0 0%, #8FD3F4 100%) 1 0%;
+  line-height: 70px;
+  height: 70px;
   text-align:center;
+  background-image: linear-gradient(-180deg, #FFFFFF 48%, rgba(255,255,255,0.00) 100%);
 
-  >span{
-    opacity:.5;
+  >span {
+    color:#5F6061
   }
 `
 
@@ -70,7 +72,7 @@ const Message = styled.div`
 `;
 
 // 📢 A stream of messages
-const Messages = ({ messages }) => {
+const Messages = ({ messages:Message[] }) => {
   const Avatar = () => <img 
         className="avatar"
         src="https://cloud.githubusercontent.com/assets/2289769/20545056/9fa044ea-b115-11e6-9314-ba3e6516e573.png"
@@ -138,3 +140,21 @@ export {
   AppLayout,
   Header
 };
+
+const Button : React.StatelessComponent<React.HTMLProps<JSX.Element>> = (props: React.HTMLProps<JSX.Element> & {
+    type?:string,
+    onClick?:Function
+}) => {
+    return (
+        <button onClick={props.onClick}
+            type={props.type}>
+            {props.children}
+        </button>
+    )
+}
+
+Button.defaultProps = {
+    type: 'button'
+}
+
+export { Button }
