@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {React, SFC} from 'react';
 import styled from 'styled-components';
 import MTRC from 'markdown-to-react-components';
 import {Message as MessageType, Reply as ReplyType} from '../typings'
@@ -72,7 +72,7 @@ const Message = styled.div`
 `;
 
 // 📢 A stream of messages
-const Messages = ({ messages:MessageType[] }) => {
+const Messages: SFC<{messages:MessageType[]}> = ({ messages }) => {
   const Avatar = () => <img 
         className="avatar"
         src="https://cloud.githubusercontent.com/assets/2289769/20545056/9fa044ea-b115-11e6-9314-ba3e6516e573.png"
@@ -94,7 +94,7 @@ const Messages = ({ messages:MessageType[] }) => {
   );
 };
 
-const ConvoRow = styled.div`
+export const ConvoRow = styled.div`
   display:flex;
   justify-content: ${({ fromMe }) => fromMe ? 'flex-end' : 'flex-start'};
 
@@ -114,8 +114,15 @@ const ResponseBar = styled.div`
   }
 `;
 
+interface ResponsesProps {
+  messages: MessageType[],
+  onMessageSubmit: MessageType=>void,
+  firstTime: boolean,
+  fromMe: boolean
+}
+
 // 🗣 A list of possible responses
-const Responses = ({messages, onMessageSubmit, firstTime}) => {
+const Responses:SFC<ResponsesProps> = ({messages, onMessageSubmit, firstTime}) => {
   const ResponseList = messages.map((message, i) => (
     <Message
       key={i}
@@ -132,13 +139,6 @@ const Responses = ({messages, onMessageSubmit, firstTime}) => {
       {ResponseList}
     </ResponseBar>
   );
-};
-
-export {
-  Messages,
-  Responses,
-  AppLayout,
-  Header
 };
 
 const Button : React.StatelessComponent<React.HTMLProps<JSX.Element>> = (props: React.HTMLProps<JSX.Element> & {
@@ -158,3 +158,10 @@ Button.defaultProps = {
 }
 
 export { Button }
+
+export {
+  Messages,
+  Responses,
+  AppLayout,
+  Header
+};
