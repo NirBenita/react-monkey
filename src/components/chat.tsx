@@ -1,4 +1,5 @@
-import {React, SFC} from 'react';
+import * as React from 'react';
+import { SFC } from 'react';
 import styled from 'styled-components';
 import MTRC from 'markdown-to-react-components';
 import {Message as MessageType, Reply as ReplyType} from '../typings'
@@ -37,7 +38,6 @@ const MessageLink = styled.a`
     color:#c2e0ff;
   }
 `
-
 const AppLayout = styled.div`
   display:flex;
   flex-direction:column;
@@ -47,7 +47,10 @@ const AppLayout = styled.div`
 `
 
 // A single message
-const Message = styled.div`
+const FromBox: SFC<{fromMe:boolean}> = (props:any)=>
+  <div>{props.children}</div>
+
+export const Message = styled(FromBox)`
     box-shadow: 0 8px 8px 0 rgba(0,0,0,0.08);
     max-width: 360px;
     min-width:32px;
@@ -94,7 +97,7 @@ const Messages: SFC<{messages:MessageType[]}> = ({ messages }) => {
   );
 };
 
-export const ConvoRow = styled.div`
+export const ConvoRow = styled(FromBox)`
   display:flex;
   justify-content: ${({ fromMe }) => fromMe ? 'flex-end' : 'flex-start'};
 
@@ -116,13 +119,14 @@ const ResponseBar = styled.div`
 
 interface ResponsesProps {
   messages: MessageType[],
-  onMessageSubmit: MessageType=>void,
+  onMessageSubmit: (reply:ReplyType) => void,
   firstTime: boolean,
-  fromMe: boolean
+  fromMe?: boolean,
+  className?: string
 }
 
 // 🗣 A list of possible responses
-const Responses:SFC<ResponsesProps> = ({messages, onMessageSubmit, firstTime}) => {
+const Responses:SFC<ResponsesProps> = ({messages, onMessageSubmit, firstTime, className}) => {
   const ResponseList = messages.map((message, i) => (
     <Message
       key={i}
@@ -140,24 +144,6 @@ const Responses:SFC<ResponsesProps> = ({messages, onMessageSubmit, firstTime}) =
     </ResponseBar>
   );
 };
-
-const Button : React.StatelessComponent<React.HTMLProps<JSX.Element>> = (props: React.HTMLProps<JSX.Element> & {
-    type?:string,
-    onClick?:Function
-}) => {
-    return (
-        <button onClick={props.onClick}
-            type={props.type}>
-            {props.children}
-        </button>
-    )
-}
-
-Button.defaultProps = {
-    type: 'button'
-}
-
-export { Button }
 
 export {
   Messages,

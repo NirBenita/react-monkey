@@ -1,3 +1,5 @@
+'use strict';
+
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 
@@ -59,7 +61,6 @@ export default class App extends React.Component<MyProps, MyState> {
   }
 
   handleReply(reply:Reply) {
-
     if (this.state.firstTime) {
       this.setState({firstTime: false})
     };

@@ -1,7 +1,7 @@
 // every bot message can invoke another message and declare the next set of responseses
 // A response specifies which bot message to fire
 
-export default [
+export default [{
     {
         id: 'welcome',
         user: 'bot',
@@ -96,7 +96,7 @@ export default [
         users: 'bot',
         value: "For questions, (or complaints about my attitude) reach out [on 🐓 Twitter!](twitter.com/NirBenita)",
     },
-
+}
 ]
 
 // Templates
