@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SFC } from 'react';
 import styled from 'styled-components';
-import {Message as MessageType} from '../typings'
+import {Message as MessageType} from '../typings';
 var md = require('markdown-it')();
 
 export const Header = styled.header`
@@ -16,7 +16,7 @@ export const Header = styled.header`
   >span {
     color:#5F6061
   }
-`
+`;
 
 // const MessageLink = styled.a`
 //   font-weight: bold;
@@ -34,9 +34,9 @@ export const AppLayout = styled.div`
   > * {
     flex: 1;
   }
-`
+`;
 const FromBox: SFC<{fromMe?: boolean, className?: 'string'}> = (props: any) =>
-  <div>{props.children}</div>
+  <div>{props.children}</div>;
 
 interface MessageProps {
   fromMe?: boolean; 
@@ -45,7 +45,7 @@ interface MessageProps {
 }
 
 const MessageBox: SFC<MessageProps> = (props: any) =>
-  <div>{props.children}</div>
+  <div>{props.children}</div>;
 
 // A single message
 export const Message = styled(MessageBox)`
@@ -72,12 +72,22 @@ export const Message = styled(MessageBox)`
     }
 `;
 
+export const ConvoRow = styled(FromBox)`
+  display:flex;
+  justify-content: ${({ fromMe }) => fromMe ? 'flex-end' : 'flex-start'};
+
+  .avatar {
+    height:36px;
+    margin: 12px 0px 12px 12px;
+  }
+`;
 // 📢 A stream of messages
 export const Messages: SFC<{messages: MessageType[]}> = ({ messages }) => {
-  const Avatar = () => <img 
+  const Avatar = () => (
+      <img 
         className="avatar"
         src="https://cloud.githubusercontent.com/assets/2289769/20545056/9fa044ea-b115-11e6-9314-ba3e6516e573.png"
-        alt="avatar" />
+        alt="avatar" />);
   
   const MessageFeed = messages.map((msg, i) => (
     <ConvoRow fromMe={msg.fromMe} key={i}>
@@ -95,16 +105,6 @@ export const Messages: SFC<{messages: MessageType[]}> = ({ messages }) => {
   );
 };
 
-export const ConvoRow = styled(FromBox)`
-  display:flex;
-  justify-content: ${({ fromMe }) => fromMe ? 'flex-end' : 'flex-start'};
-
-  .avatar {
-    height:36px;
-    margin: 12px 0px 12px 12px;
-  }
-`;
-
 const ResponseBar = styled.div`
   display:flex;
   flex-direction: row;
@@ -116,11 +116,11 @@ const ResponseBar = styled.div`
 `;
 
 interface ResponsesProps {
-  messages: MessageType[],
-  onMessageSubmit: (reply: MessageType) => void,
-  firstTime: boolean,
-  fromMe?: boolean,
-  className?: string
+  messages: MessageType[];
+  onMessageSubmit: (reply: MessageType) => void;
+  firstTime: boolean;
+  fromMe?: boolean;
+  className?: string;
 }
 
 // 🗣 A list of possible responses

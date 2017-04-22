@@ -4,27 +4,26 @@ import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 
 import {Messages, Responses, AppLayout, Header} from './components/chat';
-import {Message} from './typings'
+import {Message} from './typings';
 
 function postMessages(messages: Message[]) {
-  let messagesToAdd = [...messages]
+  let messagesToAdd = [...messages];
   return function update(state: any) {
     let newMessagesfeed = state
       .messages
       .slice();
     newMessagesfeed.push(...messagesToAdd);
-    return {messages: newMessagesfeed}
-  }
+    return {messages: newMessagesfeed};
+  };
 }
 
-
-interface MyProps{
-  conversation: any[]
+interface MyProps {
+  conversation: any[];
 }
-interface MyState{
-  firstTime: boolean,
-  messages: Message[],
-  responses: Message[],
+interface MyState {
+  firstTime: boolean;
+  messages: Message[];
+  responses: Message[];
 
 }
 export default class App extends React.Component<MyProps, MyState> {
@@ -49,7 +48,7 @@ export default class App extends React.Component<MyProps, MyState> {
 
   scrollToBottom = () => {
     const node = findDOMNode(this.messagesEnd);
-    node.scrollIntoView({behavior: "smooth"});
+    node.scrollIntoView({behavior: 'smooth'});
   }
 
   componentDidMount() {
@@ -62,8 +61,8 @@ export default class App extends React.Component<MyProps, MyState> {
 
   handleReply(reply: Message) {
     if (this.state.firstTime) {
-      this.setState({firstTime: false})
-    };
+      this.setState({firstTime: false});
+    }
 
     const nextMessage = this
       .props.conversation
@@ -71,14 +70,14 @@ export default class App extends React.Component<MyProps, MyState> {
 
     let nextResponses = nextMessage.replies;
 
-    this.setState(postMessages([reply, nextMessage]))
-    this.setState({responses: nextResponses})
+    this.setState(postMessages([reply, nextMessage]));
+    this.setState({responses: nextResponses});
 
     if (nextMessage.chain) {
       const msgToChain = this
         .props.conversation
         .find(element => element.id === nextMessage.chain);
-      this.setState(postMessages(msgToChain))
+      this.setState(postMessages(msgToChain));
     }
   }
 
@@ -96,7 +95,7 @@ export default class App extends React.Component<MyProps, MyState> {
           onMessageSubmit={this.handleReply}
           firstTime={this.state.firstTime}/>
         <div 
-          style={ {float: "left", clear: "both"} }
+          style={{float: 'left', clear: 'both'}}
           ref={(el) => { this.messagesEnd = el; }} />
       </AppLayout>
     );
