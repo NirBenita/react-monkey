@@ -7,6 +7,8 @@ export interface Message {
   id: string,
   user: string,
   value: string,
-  fromMe: boolean, // Remove? Extend class where needed
-  replies: Reply[]
+  
+  fromMe?: boolean, // Remove? Extend class where needed
+  replies?: Reply[],
+  next?: string,
 }

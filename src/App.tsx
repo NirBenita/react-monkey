@@ -4,7 +4,7 @@ import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 
 import {Messages, Responses, AppLayout, Header} from './components/chat';
-import {Message, Reply} from './typings'
+import {Message} from './typings'
 
 function postMessages(messages:Message[]) {
   let messagesToAdd = [...messages]
@@ -24,7 +24,7 @@ interface MyProps{
 interface MyState{
   firstTime:boolean,
   messages: Message[],
-  responses: Reply[],
+  responses: Message[],
 
 }
 export default class App extends React.Component<MyProps, MyState> {
@@ -60,7 +60,7 @@ export default class App extends React.Component<MyProps, MyState> {
     this.scrollToBottom();
   }
 
-  handleReply(reply:Reply) {
+  handleReply(reply:Message) {
     if (this.state.firstTime) {
       this.setState({firstTime: false})
     };
