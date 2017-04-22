@@ -35,16 +35,16 @@ export const AppLayout = styled.div`
     flex: 1;
   }
 `
-const FromBox: SFC<{fromMe?:boolean, className?:'string'}> = (props:any)=>
+const FromBox: SFC<{fromMe?: boolean, className?: 'string'}> = (props: any) =>
   <div>{props.children}</div>
 
 interface MessageProps {
-  fromMe?:boolean, 
-  className?:string,
-  onClick?:()=>void,
+  fromMe?: boolean; 
+  className?: string;
+  onClick?: () => void;
 }
 
-const MessageBox: SFC<MessageProps> = (props:any) =>
+const MessageBox: SFC<MessageProps> = (props: any) =>
   <div>{props.children}</div>
 
 // A single message
@@ -73,7 +73,7 @@ export const Message = styled(MessageBox)`
 `;
 
 // 📢 A stream of messages
-export const Messages: SFC<{messages:MessageType[]}> = ({ messages }) => {
+export const Messages: SFC<{messages: MessageType[]}> = ({ messages }) => {
   const Avatar = () => <img 
         className="avatar"
         src="https://cloud.githubusercontent.com/assets/2289769/20545056/9fa044ea-b115-11e6-9314-ba3e6516e573.png"
@@ -117,14 +117,14 @@ const ResponseBar = styled.div`
 
 interface ResponsesProps {
   messages: MessageType[],
-  onMessageSubmit: (reply:MessageType) => void,
+  onMessageSubmit: (reply: MessageType) => void,
   firstTime: boolean,
   fromMe?: boolean,
   className?: string
 }
 
 // 🗣 A list of possible responses
-export const Responses:SFC<ResponsesProps> = ({messages, onMessageSubmit, firstTime, className}) => {
+export const Responses: SFC<ResponsesProps> = ({messages, onMessageSubmit, firstTime, className}) => {
   const ResponseList = messages.map((message, i) => (
     <Message
       key={i}

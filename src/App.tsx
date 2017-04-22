@@ -6,9 +6,9 @@ import {findDOMNode} from 'react-dom';
 import {Messages, Responses, AppLayout, Header} from './components/chat';
 import {Message} from './typings'
 
-function postMessages(messages:Message[]) {
+function postMessages(messages: Message[]) {
   let messagesToAdd = [...messages]
-  return function update(state:any) {
+  return function update(state: any) {
     let newMessagesfeed = state
       .messages
       .slice();
@@ -19,17 +19,17 @@ function postMessages(messages:Message[]) {
 
 
 interface MyProps{
-  conversation:any[]
+  conversation: any[]
 }
 interface MyState{
-  firstTime:boolean,
+  firstTime: boolean,
   messages: Message[],
   responses: Message[],
 
 }
 export default class App extends React.Component<MyProps, MyState> {
   messagesEnd: HTMLDivElement;
-  constructor(props:MyProps) {
+  constructor(props: MyProps) {
     super(props);
     const welcomeMessage = props.conversation[0];
 
@@ -60,7 +60,7 @@ export default class App extends React.Component<MyProps, MyState> {
     this.scrollToBottom();
   }
 
-  handleReply(reply:Message) {
+  handleReply(reply: Message) {
     if (this.state.firstTime) {
       this.setState({firstTime: false})
     };
@@ -72,7 +72,7 @@ export default class App extends React.Component<MyProps, MyState> {
     let nextResponses = nextMessage.replies;
 
     this.setState(postMessages([reply, nextMessage]))
-    this.setState({responses:nextResponses})
+    this.setState({responses: nextResponses})
 
     if (nextMessage.chain) {
       const msgToChain = this
@@ -96,7 +96,7 @@ export default class App extends React.Component<MyProps, MyState> {
           onMessageSubmit={this.handleReply}
           firstTime={this.state.firstTime}/>
         <div 
-          style={ {float:"left", clear: "both"} }
+          style={ {float: "left", clear: "both"} }
           ref={(el) => { this.messagesEnd = el; }} />
       </AppLayout>
     );
