@@ -35,7 +35,7 @@ export const AppLayout = styled.div`
     flex: 1;
   }
 `;
-const FromBox: SFC<{fromMe?: boolean, className?: 'string'}> = (props: any) =>
+const FromBox: SFC<{fromMe?: boolean, className?: 'string'}> = (props) =>
   <div>{props.children}</div>;
 
 interface MessageProps {
@@ -44,7 +44,7 @@ interface MessageProps {
   onClick?: () => void;
 }
 
-const MessageBox: SFC<MessageProps> = (props: any) =>
+const MessageBox: SFC<MessageProps> = (props) =>
   <div>{props.children}</div>;
 
 // A single message
@@ -54,9 +54,9 @@ export const Message = styled(MessageBox)`
     min-width:32px;
     margin: 12px;
     padding: 12px;
-    background:${({ fromMe }) => fromMe ? '#F7F7F7' : '#5180FF'};
-    color: ${({ fromMe }) => fromMe ? 'black' : 'white'};
-    border-radius:${({ fromMe }) => fromMe ? '8px 0px 8px 8px' : '0px 8px 8px 8px'};
+    background:${props => props.fromMe ? '#F7F7F7' : '#5180FF'};
+    color: ${props => props.fromMe ? 'black' : 'white'};
+    border-radius:${props => props.fromMe ? '8px 0px 8px 8px' : '0px 8px 8px 8px'};
 
     &.pinned{
       max-width:none;
@@ -93,7 +93,7 @@ export const Messages: SFC<{messages: MessageType[]}> = ({ messages }) => {
     <ConvoRow fromMe={msg.fromMe} key={i}>
       {!msg.fromMe ? <Avatar /> : null}
       <Message fromMe={msg.fromMe}>
-        <div>{md.renderer(msg.value)}</div>
+        <div>{md.render(msg.value)}</div>
       </Message>
     </ConvoRow>
   ));
@@ -128,7 +128,7 @@ export const Responses: SFC<ResponsesProps> = ({messages, onMessageSubmit, first
   const ResponseList = messages.map((message, i) => (
     <Message
       key={i}
-      fromMe
+      fromMe={true}
       onClick={() => onMessageSubmit(message)}
       className="reply"
     >
