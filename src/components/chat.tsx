@@ -35,8 +35,6 @@ export const AppLayout = styled.div`
     flex: 1;
   }
 `;
-const FromBox: SFC<{fromMe?: boolean, className?: 'string'}> = (props) =>
-  <div>{props.children}</div>;
 
 interface MessageProps {
   fromMe?: boolean; 
@@ -44,8 +42,8 @@ interface MessageProps {
   onClick?: () => void;
 }
 
-const MessageBox: SFC<MessageProps> = (props) =>
-  <div>{props.children}</div>;
+const MessageBox: SFC<MessageProps> = (props:any) =>
+  <div className={props.className} onClick={props.onClick} >{props.children}</div>;
 
 // A single message
 export const Message = styled(MessageBox)`
@@ -72,6 +70,9 @@ export const Message = styled(MessageBox)`
     }
 `;
 
+const FromBox: SFC<{fromMe?: boolean, className?: 'string'}> = (props) =>
+  <div className={props.className}>{props.children}</div>;
+
 export const ConvoRow = styled(FromBox)`
   display:flex;
   justify-content: ${({ fromMe }) => fromMe ? 'flex-end' : 'flex-start'};
@@ -93,7 +94,7 @@ export const Messages: SFC<{messages: MessageType[]}> = ({ messages }) => {
     <ConvoRow fromMe={msg.fromMe} key={i}>
       {!msg.fromMe ? <Avatar /> : null}
       <Message fromMe={msg.fromMe}>
-        <div>{md.render(msg.value)}</div>
+        <div>{md.renderInline(msg.value)}</div>
       </Message>
     </ConvoRow>
   ));

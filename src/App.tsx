@@ -63,11 +63,11 @@ export default class App extends React.Component<MyProps, MyState> {
     if (this.state.firstTime) {
       this.setState({firstTime: false});
     }
+    reply.fromMe = true;
 
     const nextMessage = this
       .props.conversation
       .find(msg => msg.id === reply.next);
-
     let nextResponses = nextMessage.replies;
 
     this.setState(postMessages([reply, nextMessage]));
