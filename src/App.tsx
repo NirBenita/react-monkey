@@ -72,12 +72,11 @@ export default class App extends React.Component<MyProps, MyState> {
 
     this.setState(postMessages([reply, nextMessage]));
     this.setState({responses: nextResponses});
-
     if (nextMessage.chain) {
       const msgToChain = this
         .props.conversation
         .find(element => element.id === nextMessage.chain);
-      this.setState(postMessages(msgToChain));
+      this.setState(postMessages([msgToChain]));
     }
   }
 
