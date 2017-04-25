@@ -94,7 +94,7 @@ export const Messages: SFC<{messages: MessageType[]}> = ({ messages }) => {
     <ConvoRow fromMe={msg.fromMe} key={i}>
       {!msg.fromMe ? <Avatar /> : null}
       <Message fromMe={msg.fromMe}>
-        <div>{md.renderInline(msg.value)}</div>
+        <div dangerouslySetInnerHTML={{__html:md.render(msg.value)}} />
       </Message>
     </ConvoRow>
   ));
