@@ -1,7 +1,7 @@
 // every bot message can invoke another message and declare the next set of responseses
 // A response specifies which bot message to fire
 
-export default [
+exports.default = [
     {
         id: 'welcome',
         user: 'bot',
@@ -16,7 +16,7 @@ export default [
     {
         id: 'who',
         user: 'bot',
-        value: "So happy you asked 😒... Nir Benita is a self-taught Product Designer and Front End Developer working at Wix.com.",
+        value: "So happy you asked 😒... Nir Benita is a self-taught Product Designer and Front End Developer working at [Wix.com](https://www.wix.com/).",
         replies: [
             {
                 value: "📐 what does he design?",
@@ -94,10 +94,11 @@ export default [
     {
         id: 'contactMe',
         users: 'bot',
-        value: "For questions, (or complaints about my attitude) reach out [on 🐓 Twitter!](twitter.com/NirBenita)",
-    },
-
+        value: "For questions, (or complaints about my attitude) reach out [on 🐓 Twitter!](http://www.twitter.com/NirBenita)",
+    }
 ]
+
+
 
 // Templates
 // {

@@ -1,32 +1,41 @@
-import React, {Component} from 'react';
+'use strict';
+
+import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 
 import {Messages, Responses, AppLayout, Header} from './components/chat';
+import {Message} from './types';
 
-function postMessages(messages) {
-  let messagesToAdd = [...arguments]
-  return function update(state) {
+function postMessages(messages: Message[]) {
+  let messagesToAdd = [...messages];
+  return function update(state: any) {
     let newMessagesfeed = state
       .messages
       .slice();
     newMessagesfeed.push(...messagesToAdd);
-    return {messages: newMessagesfeed}
-  }
+    return {messages: newMessagesfeed};
+  };
 }
 
-export class App extends Component {
-  constructor(props) {
+interface MyProps {
+  conversation: any[];
+}
+interface MyState {
+  firstTime?: boolean;
+  messages: Message[];
+  responses?: Message[];
+
+}
+export default class App extends React.Component<MyProps, MyState> {
+  messagesEnd: HTMLDivElement;
+  constructor(props: MyProps) {
     super(props);
     const welcomeMessage = props.conversation[0];
-    const toPin = props
-      .conversation
-      .find(element => element.id === 'toPin');
 
     this.state = {
       messages: [welcomeMessage],
       responses: welcomeMessage.replies,
-      firstTime: true,
-      toPin: toPin
+      firstTime: true
     };
 
     this.handleReply = this
@@ -39,7 +48,7 @@ export class App extends Component {
 
   scrollToBottom = () => {
     const node = findDOMNode(this.messagesEnd);
-    node.scrollIntoView({behavior: "smooth"});
+    node.scrollIntoView({behavior: 'smooth'});
   }
 
   componentDidMount() {
@@ -50,31 +59,32 @@ export class App extends Component {
     this.scrollToBottom();
   }
 
-  handleReply(userMessage) {
-
-    userMessage.fromMe = true;
-
+  handleReply(reply: Message) {
     if (this.state.firstTime) {
-      this.setState({firstTime: false})
-    };
+      this.setState({firstTime: false});
+    }
+    reply.fromMe = true;
 
     const nextMessage = this
-      .props
-      .conversation
-      .find(element => element.id === userMessage.next);
+      .props.conversation
+      .find(msg => msg.id === reply.next);
+    if (nextMessage) {
+      const nextResponses = nextMessage ? nextMessage.replies : undefined;
 
-    let responses = nextMessage.replies;
+      this.setState(postMessages([reply, nextMessage]));
+      this.setState({responses: nextResponses});
 
-    this.setState(postMessages(userMessage, nextMessage))
-    this.setState({responses})
-
-    if (nextMessage.chain) {
-      const msgToChain = this
-        .props
-        .conversation
-        .find(element => element.id === nextMessage.chain);
-      this.setState(postMessages(msgToChain))
+      if (nextMessage.chain) {
+        
+        const msgToChain = this
+          .props.conversation
+          .find(msg => msg.id === nextMessage.chain);
+        
+        // tslint:disable-next-line:no-unused-expression
+        msgToChain && this.setState(postMessages([msgToChain]));
+      }
     }
+
   }
 
   render() {
@@ -91,7 +101,7 @@ export class App extends Component {
           onMessageSubmit={this.handleReply}
           firstTime={this.state.firstTime}/>
         <div 
-          style={ {float:"left", clear: "both"} }
+          style={{float: 'left', clear: 'both'}}
           ref={(el) => { this.messagesEnd = el; }} />
       </AppLayout>
     );
