@@ -16,7 +16,7 @@ exports.default = [
     {
         id: 'who',
         user: 'bot',
-        value: "So happy you asked 😒... Nir Benita is a self-taught Product Designer and Front End Developer working at Wix.com.",
+        value: "So happy you asked 😒... Nir Benita is a self-taught Product Designer and Front End Developer working at [Wix.com](https://www.wix.com/).",
         replies: [
             {
                 value: "📐 what does he design?",
@@ -94,7 +94,7 @@ exports.default = [
     {
         id: 'contactMe',
         users: 'bot',
-        value: "For questions, (or complaints about my attitude) reach out [on 🐓 Twitter!](twitter.com/NirBenita)",
+        value: "For questions, (or complaints about my attitude) reach out [on 🐓 Twitter!](http://www.twitter.com/NirBenita)",
     }
 ]
 

@@ -9,6 +9,7 @@ export interface Message {
   value: string;
   
   fromMe?: boolean; // Remove? Extend class where needed
-  replies?: Reply[];
+  replies?: Message[];
   next?: string;
+  chain?: string;
 }

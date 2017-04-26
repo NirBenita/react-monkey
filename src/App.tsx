@@ -4,7 +4,7 @@ import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 
 import {Messages, Responses, AppLayout, Header} from './components/chat';
-import {Message} from './typings';
+import {Message} from './types';
 
 function postMessages(messages: Message[]) {
   let messagesToAdd = [...messages];
@@ -21,9 +21,9 @@ interface MyProps {
   conversation: any[];
 }
 interface MyState {
-  firstTime: boolean;
+  firstTime?: boolean;
   messages: Message[];
-  responses: Message[];
+  responses?: Message[];
 
 }
 export default class App extends React.Component<MyProps, MyState> {
@@ -68,16 +68,23 @@ export default class App extends React.Component<MyProps, MyState> {
     const nextMessage = this
       .props.conversation
       .find(msg => msg.id === reply.next);
-    let nextResponses = nextMessage.replies;
+    if (nextMessage) {
+      const nextResponses = nextMessage ? nextMessage.replies : undefined;
 
-    this.setState(postMessages([reply, nextMessage]));
-    this.setState({responses: nextResponses});
-    if (nextMessage.chain) {
-      const msgToChain = this
-        .props.conversation
-        .find(element => element.id === nextMessage.chain);
-      this.setState(postMessages([msgToChain]));
+      this.setState(postMessages([reply, nextMessage]));
+      this.setState({responses: nextResponses});
+
+      if (nextMessage.chain) {
+        
+        const msgToChain = this
+          .props.conversation
+          .find(msg => msg.id === nextMessage.chain);
+        
+        // tslint:disable-next-line:no-unused-expression
+        msgToChain && this.setState(postMessages([msgToChain]));
+      }
     }
+
   }
 
   render() {

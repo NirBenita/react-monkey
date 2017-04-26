@@ -4,7 +4,6 @@ import App from './App';
 import conversation from './lib/personal-website';
 import { injectGlobal } from 'styled-components';
 
-
 // tslint:disable-next-line:no-unused-expression
 injectGlobal`
     * {
@@ -17,7 +16,9 @@ injectGlobal`
         background: #F5F8FA;
         height: 100%;
         width: 100%;
-        font-family: "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-family: "-apple-system", "BlinkMacSystemFont", 
+        "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+        "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
       }
 `;
 

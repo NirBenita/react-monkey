@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SFC } from 'react';
 import styled from 'styled-components';
-import {Message as MessageType} from '../typings';
+import {Message as MessageType} from '../types';
 var md = require('markdown-it')();
 
 export const Header = styled.header`
@@ -42,7 +42,7 @@ interface MessageProps {
   onClick?: () => void;
 }
 
-const MessageBox: SFC<MessageProps> = (props:any) =>
+const MessageBox: SFC<MessageProps> = (props: any) =>
   <div className={props.className} onClick={props.onClick} >{props.children}</div>;
 
 // A single message
@@ -94,7 +94,7 @@ export const Messages: SFC<{messages: MessageType[]}> = ({ messages }) => {
     <ConvoRow fromMe={msg.fromMe} key={i}>
       {!msg.fromMe ? <Avatar /> : null}
       <Message fromMe={msg.fromMe}>
-        <div dangerouslySetInnerHTML={{__html:md.render(msg.value)}} />
+        <div dangerouslySetInnerHTML={{__html: md.render(msg.value)}} />
       </Message>
     </ConvoRow>
   ));
@@ -117,29 +117,30 @@ const ResponseBar = styled.div`
 `;
 
 interface ResponsesProps {
-  messages: MessageType[];
+  messages?: MessageType[];
   onMessageSubmit: (reply: MessageType) => void;
-  firstTime: boolean;
+  firstTime?: boolean;
   fromMe?: boolean;
   className?: string;
 }
 
 // 🗣 A list of possible responses
 export const Responses: SFC<ResponsesProps> = ({messages, onMessageSubmit, firstTime, className}) => {
-  const ResponseList = messages.map((message, i) => (
-    <Message
-      key={i}
-      fromMe={true}
-      onClick={() => onMessageSubmit(message)}
-      className="reply"
-    >
-      {message.value}
-    </Message>
-  ));
-  return (
-    <ResponseBar>
-      {firstTime ? <span className="hint">Click me 👉</span> : null}
-      {ResponseList}
-    </ResponseBar>
+    const ResponseList = messages ? messages.map((message, i) => (
+      <Message
+        key={i}
+        fromMe={true}
+        onClick={() => onMessageSubmit(message)}
+        className="reply"
+      >
+        {message.value}
+      </Message>
+    )) : null;
+
+    return (
+      <ResponseBar>
+        {firstTime ? <span className="hint">Click me 👉</span> : null}
+        {ResponseList}
+      </ResponseBar>
   );
 };
