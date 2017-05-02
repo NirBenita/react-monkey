@@ -8,7 +8,7 @@ import {Message} from './types';
 
 function postMessages(messages: Message[]) {
   let messagesToAdd = [...messages];
-  return function update(state: any) {
+  return function update(state: MyState) {
     let newMessagesfeed = state
       .messages
       .slice();
