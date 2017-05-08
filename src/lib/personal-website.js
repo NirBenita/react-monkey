@@ -23,7 +23,7 @@ exports.default = [
                 next: "designer"
             },
             {
-                value: "👍",
+                value: "👍 next question",
                 next: "developer"
             }
         ]

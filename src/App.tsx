@@ -3,7 +3,8 @@
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 
-import {Messages, Responses, AppLayout, Header} from './components/chat';
+import {Messages, Responses, AppLayout} from './components/chat';
+import {Bar, Button} from './components/atoms';
 import {Message} from './types';
 
 function postMessages(messages: Message[]) {
@@ -24,7 +25,8 @@ interface MyState {
   firstTime?: boolean;
   messages: Message[];
   responses?: Message[];
-
+  lastScroll: number;
+  scrollingDown: boolean;
 }
 export default class App extends React.Component<MyProps, MyState> {
   messagesEnd: HTMLDivElement;
@@ -35,14 +37,16 @@ export default class App extends React.Component<MyProps, MyState> {
     this.state = {
       messages: [welcomeMessage],
       responses: welcomeMessage.replies,
-      firstTime: true
+      firstTime: true,
+      lastScroll: 0,
+      scrollingDown: false
     };
 
     this.handleReply = this
       .handleReply
       .bind(this);
-    this.componentDidUpdate = this
-      .componentDidUpdate
+    this.handleScroll = this
+      .handleScroll
       .bind(this);
   }
 
@@ -52,11 +56,21 @@ export default class App extends React.Component<MyProps, MyState> {
   }
 
   componentDidMount() {
-    this.scrollToBottom();
+    window.addEventListener('scroll', this.handleScroll, true);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
-  componentDidUpdate() {
-    this.scrollToBottom();
+  handleScroll(e: any) {
+    if (this.state.lastScroll < e.srcElement.body.scrollTop){
+      this.setState({scrollingDown: true});  
+    } else {
+      this.setState({scrollingDown: false});  
+    }
+    this.setState({lastScroll: e.srcElement.body.scrollTop});  
+
+    console.log(e.srcElement.body.scrollTop, this.state.scrollingDown);
   }
 
   handleReply(reply: Message) {
@@ -84,17 +98,19 @@ export default class App extends React.Component<MyProps, MyState> {
         msgToChain && this.setState(postMessages([msgToChain]));
       }
     }
-
+    setTimeout( this.scrollToBottom, 50 );
   }
 
   render() {
     return (
       <AppLayout className="App">
-        <Header>
-          <span>
-            - TODAY -
-          </span>
-        </Header>
+        <Bar className={this.state.scrollingDown ? 'hide' : ''} >
+          Build your own! 
+          <a target="_blank" href="https://github.com/NirBenita/react-monkey">
+            <Button style={{'margin-left': '12px'}}>Fork</Button>
+          </a>
+        </Bar>
+        
         <Messages messages={this.state.messages}/>
         <Responses
           messages={this.state.responses}
@@ -118,11 +134,14 @@ TODO
   [x] Allow the bot to chain messages
   [ ] Typing animation
   [x] Add markdown support
-  [ ] Add Typescript support
+  [x] Add Typescript support
   [ ] Add Image and Link message components
   [x] Scroll to bottom on msg add
   [x] bot avatar
   [ ] contact me shortcut
   [ ] Add current time
+  [ ] Remove top bar when scrolling
+  [ ] change color of links
+
   [ ] Rewrite and test
 */

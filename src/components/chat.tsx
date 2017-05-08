@@ -29,6 +29,7 @@ export const Header = styled.header`
 // `
 
 export const AppLayout = styled.div`
+  padding-top:60px;
   display:flex;
   flex-direction:column;
   > * {
@@ -67,6 +68,11 @@ export const Message = styled(MessageBox)`
 
     &.reply:hover{
       background:#f1f1f1;
+    }
+
+    a{
+      color:white;
+    font-weight:bold;
     }
 `;
 
