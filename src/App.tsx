@@ -69,8 +69,6 @@ export default class App extends React.Component<MyProps, MyState> {
       this.setState({scrollingDown: false});  
     }
     this.setState({lastScroll: e.srcElement.body.scrollTop});  
-
-    console.log(e.srcElement.body.scrollTop, this.state.scrollingDown);
   }
 
   handleReply(reply: Message) {
@@ -107,7 +105,7 @@ export default class App extends React.Component<MyProps, MyState> {
         <Bar className={this.state.scrollingDown ? 'hide' : ''} >
           Build your own! 
           <a target="_blank" href="https://github.com/NirBenita/react-monkey">
-            <Button style={{'margin-left': '12px'}}>Fork</Button>
+            <Button style={{'marginLeft': '12px'}}>Fork</Button>
           </a>
         </Bar>
         
@@ -140,8 +138,8 @@ TODO
   [x] bot avatar
   [ ] contact me shortcut
   [ ] Add current time
-  [ ] Remove top bar when scrolling
-  [ ] change color of links
+  [x] Remove top bar when scrolling
+  [x] change color of links
 
   [ ] Rewrite and test
 */

@@ -82,7 +82,7 @@ const FromBox: SFC<{fromMe?: boolean, className?: 'string'}> = (props) =>
 export const ConvoRow = styled(FromBox)`
   display:flex;
   justify-content: ${({ fromMe }) => fromMe ? 'flex-end' : 'flex-start'};
-
+  
   .avatar {
     height:36px;
     margin: 12px 0px 12px 12px;
