@@ -1,0 +1,99 @@
+{
+  "name": "NirBenita/react-monkey",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "React Monkey",
+  "branch": "master",
+  "style": {
+    "name": "Brutalist",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/BasicHeader",
+      "article": "article/MarkdownArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "Consolas, \"Liberation Mono\", Menlo, Courier, monospace",
+    "heading": {},
+    "typeScale": [
+      48,
+      32,
+      20,
+      18,
+      16,
+      14,
+      12
+    ],
+    "layout": {
+      "maxWidth": 1024,
+      "fluid": true
+    },
+    "colors": {
+      "text": "#333",
+      "background": "#fff",
+      "primary": "#666",
+      "secondary": "#888",
+      "highlight": "#1f80ff",
+      "muted": "#f6f6f6",
+      "border": "#eee"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "http://www.benita.me",
+          "text": "Home"
+        },
+        {
+          "href": "https://github.com/NirBenita/react-monkey",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://npmjs.com/package/react-monkey-ts",
+          "text": "npm"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "react-monkey",
+      "subhead": "React Monkey is a tiny project for building Dialog-Tree chat appliactions.",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "react-monkey: React Monkey is a tiny project for building Dialog-Tree chat appliactions.",
+          "url": "http://www.benita.me"
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "NirBenita",
+          "repo": "react-monkey"
+        }
+      ],
+      "text": "v0.1.0"
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "<p>&#x1F6A7; This project is under construction &#x1F6A7; </p>\n\n<p>React Monkey is a tiny project for building Dialog-Tree chat appliactions.\n<img src=\"https://cloud.githubusercontent.com/assets/2289769/24579745/abe7e5a6-1703-11e7-8061-51e0cb686245.gif\"></p>\n<p>It&apos;s built using React, Typescript and Styled components.</p>\n<h2>Running</h2>\n<p>This project is using create-react-app, and so to run it, simply:</p>\n<ol>\n<li>Clone this project</li>\n<li><code>yarn start</code>/<code>npm start</code></li>\n</ol>\n<h2>Build your own</h2>\n<p>The app accepts an array of &quot;Message&quot; objects, each containing a message to view, and a list of possible replies.</p>\n<pre>{\n        <span class=\"hljs-comment\">// Use these to point specific messages from the conversation</span>\n        id: <span class=\"hljs-string\">&apos;what&apos;</span>,\n        <span class=\"hljs-comment\">// This is the content of the message to be displayed ( + Markdown! )</span>\n        value: <span class=\"hljs-string\">&apos;React Monkey is a tiny project for building **Dialog-Tree** chat appliactions.&apos;</span>,\n        <span class=\"hljs-comment\">// You can point to another message to break text down into smaller chunks</span>\n        chain: <span class=\"hljs-string\">&apos;monkeyIsland&apos;</span>,\n        <span class=\"hljs-comment\">// This is the repleis that will be avilable to the user</span>\n        replies: [\n            {\n                <span class=\"hljs-attr\">value</span>: <span class=\"hljs-string\">&quot;Why would I need that?&quot;</span>,\n                <span class=\"hljs-attr\">next</span>: <span class=\"hljs-string\">&quot;why&quot;</span>\n            },\n            {\n                <span class=\"hljs-attr\">value</span>: <span class=\"hljs-string\">&quot;Ah, finally!&quot;</span>,\n                <span class=\"hljs-attr\">next</span>: <span class=\"hljs-string\">&quot;finally&quot;</span>\n            }\n        ]\n    },</pre>"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/NirBenita/react-monkey",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/NirBenita",
+          "text": "NirBenita"
+        }
+      ]
+    }
+  ]
+}
