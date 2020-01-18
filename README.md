@@ -9,7 +9,8 @@ It's built using React, Typescript and Styled components.
 ## Running
 This project is using create-react-app, and so to run it, simply:
 1. Clone this project
-2. `yarn start`/`npm start`
+2. `yarn`/`npm i`
+3. `yarn start`/`npm start`
 
 ## Build your own
 The app accepts an array of "Message" objects, each containing a message to view, and a list of possible replies.
